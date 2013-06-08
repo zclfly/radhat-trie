@@ -3,13 +3,22 @@ dnl Copyright (c) 2013 Hyperbotics, Inc. <http://www.hyperbotics.com>
 dnl This file is part of radhat-trie
 dnl
 
-dnl Process this file with autoconf to produce a configure script.
-AC_PREREQ([2.67])
 dnl Every other copy of the package version number gets its value from here
 AC_INIT([radhat-trie], 0.1, harsha@meld.mn, ,[https://github.com/meld-mn/radhat-trie])
-AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([gnu dist-bzip2 silent-rules])
-AM_SILENT_RULES(yes)
+
+AM_INIT_AUTOMAKE
+
+if make --help 2>&1 | grep -q no-print-directory; then
+   AM_MAKEFLAGS="$AM_MAKEFLAGS --no-print-directory";
+fi
+
+if make --help 2>&1 | grep -q quiet; then
+   AM_MAKEFLAGS="$AM_MAKEFLAGS --quiet"
+fi
+
+if libtool --help 2>&1 | grep -q quiet; then
+   AM_LIBTOOLFLAGS="--quiet";
+fi
 
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AC_CONFIG_HEADERS(config.h)
@@ -24,9 +33,8 @@ AC_CONFIG_FILES([Makefile
 	        src/Makefile
 		src/trie/Makefile
 		src/hat-trie/Makefile
-		doc/Makefile
-		contrib/Makefile
-		contrib/aclocal/Makefile])
+		tests/Makefile
+		doc/Makefile])
 
 AC_PROG_CC
 AC_PROG_LIBTOOL
@@ -52,6 +60,8 @@ AC_CHECK_TOOL([LD],[ld])
 dnl Check for pkg-config
 PKG_PROG_PKG_CONFIG
 
+CONTRIBDIR='$(top_srcdir)/contrib'
+AC_SUBST(CONTRIBDIR)
 AC_SUBST(AM_MAKEFLAGS)
 AC_SUBST(AM_LIBTOOLFLAGS)
 

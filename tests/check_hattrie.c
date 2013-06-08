@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #include "str_map.h"
-#include "../src/hat-trie.h"
+#include "hat-trie.h"
 
 /* Simple random string generation. */
 void randstr(char* x, size_t len)
