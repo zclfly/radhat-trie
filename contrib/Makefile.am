@@ -1,0 +1,5 @@
+SUBDIRS = aclocal
+
+EXTRA_DIST = 
+
+CLEANFILES = 
