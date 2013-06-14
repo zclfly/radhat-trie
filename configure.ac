@@ -1,10 +1,10 @@
-dnl Copyright (c) 2013 Hyperbotics, Inc. <http://www.hyperbotics.com>
+dnl Copyright (c) 2013 Hyperbotics, Inc. <http://www.hyperbotics.com.com>
 
 dnl This file is part of radhat-trie
 dnl
 
 dnl Every other copy of the package version number gets its value from here
-AC_INIT([radhat-trie], 0.1, harsha@meld.mn, ,[https://github.com/meld-mn/radhat-trie])
+AC_INIT([radhat-trie], 0.1, harsha@hyperbotics.com, ,[https://github.com/meld-mn/radhat-trie])
 
 AM_INIT_AUTOMAKE
 
